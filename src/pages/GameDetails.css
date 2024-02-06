@@ -1,0 +1,36 @@
+.game-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+    .card {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #ccc;
+        padding: 1px !important;
+        margin-bottom: 1vh;
+    }
+    .card-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 12px;
+        text-align: center;
+        align-items: center;
+        gap: 6vh;
+      }
+      
+      .team {
+        font-size: 4vh !important;
+        margin-bottom: 0px;
+      }
+      
+      .scores {
+        font-size: 3vh !important;
+      }

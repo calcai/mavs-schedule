@@ -1,0 +1,46 @@
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+  
+  .card {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 1px !important;
+    margin-bottom: 1vh;
+  }
+  
+  .card-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px;
+    text-align: center;
+    align-items: center;
+    gap: 5vh;
+    margin-bottom: 0;
+  }
+  
+  .button {
+    margin-top: 0vh !important;
+  }
+  
+  .team {
+    font-size: 3vh !important;
+    margin-bottom: 0px;
+  }
+  
+  .scores {
+    font-size: 2vh !important;
+  }
+
+  .time {
+    margin: 0;
+  }
