@@ -13,7 +13,7 @@ const Starters = (props) => {
     const rows = props.playerList
     
     return(
-        <TableContainer component={Paper} sx = {{ width: "95%"}}>
+        <TableContainer component={Paper} sx = {{ width: "95%", border: 1}}>
             <Table sx={{ minWidth: 250 }} size="small" aria-label="a dense table">
                 <TableHead>
                 <TableRow hover>
@@ -23,15 +23,14 @@ const Starters = (props) => {
                         background: "white",
                         left: 0,
                         zIndex: "9999 !important"}}><Typography><b>{rows[0].team} Starters</b></Typography></TableCell>
+                    <TableCell align="right">Pos</TableCell>
                     <TableCell align="right">Min</TableCell>
-                    <TableCell align="right">FGM</TableCell>
-                    <TableCell align="right">FGA</TableCell>
-                    <TableCell align="right">FTM</TableCell>
-                    <TableCell align="right">FTA</TableCell>
-                    <TableCell align="right">3PM</TableCell>
-                    <TableCell align="right">3PA</TableCell>
+                    <TableCell align="right">FG</TableCell>
+                    <TableCell align="right">FT</TableCell>
+                    <TableCell align="right">3P</TableCell>
                     <TableCell align="right">REB</TableCell>
                     <TableCell align="right">AST</TableCell>
+                    <TableCell align="right">TOV</TableCell>
                     <TableCell align="right">STL</TableCell>
                     <TableCell align="right">BLK</TableCell>
                     <TableCell align="right">PF</TableCell>
@@ -56,21 +55,21 @@ const Starters = (props) => {
                     >
                     <TableCell component="th" scope="row" sx = {{
                         position: "sticky",
+                        minWidth: 120,
                         width: 180,
                         background: "white",
                         left: 0,
                         zIndex: "9999 !important"}}>
                         {row.name}
                     </TableCell>
+                    <TableCell align="right">{row.pos}</TableCell>
                     <TableCell align="right">{row.min}</TableCell>
-                    <TableCell align="right">{row.fgm}</TableCell>
-                    <TableCell align="right">{row.fga}</TableCell>
-                    <TableCell align="right">{row.ftm}</TableCell>
-                    <TableCell align="right">{row.fta}</TableCell>
-                    <TableCell align="right">{row.tpm}</TableCell>
-                    <TableCell align="right">{row.tpa}</TableCell>
+                    <TableCell align="right">{row.fgm + "-" + row.fga}</TableCell>
+                    <TableCell align="right">{row.ftm + "-" + row.fta}</TableCell>
+                    <TableCell align="right">{row.tpm + "-" + row.tpa}</TableCell>
                     <TableCell align="right">{row.reb}</TableCell>
                     <TableCell align="right">{row.ast}</TableCell>
+                    <TableCell align="right">{row.tov}</TableCell>
                     <TableCell align="right">{row.stl}</TableCell>
                     <TableCell align="right">{row.blk}</TableCell>
                     <TableCell align="right">{row.pf}</TableCell>
@@ -84,7 +83,7 @@ const Starters = (props) => {
                             zIndex: "9999 !important"
                         }}
                         >
-                            {row.pts}
+                            <b>{row.pts}</b>
                     </TableCell>
                     </TableRow>
                 ))}

@@ -37,7 +37,7 @@ const Scores = (props) => {
                 Object.values(pastGameData).map((game, index) => (
                     <Card className="card" key={index}>
                         <CardContent className="card-content">
-                            {React.createElement(getLogo(game.homeTeam), {className: "logo", size: "10vh", margin: 0})} 
+                            {React.createElement(getLogo(game.awayTeam), {className: "logo", size: "10vh", margin: 0})} 
                             <Typography className="team" variant="body1" color="textPrimary">
                                 {game.awayTeam}
                             </Typography>
@@ -47,7 +47,7 @@ const Scores = (props) => {
                             <Typography className="team" variant="body1" color="textPrimary">
                                 {game.homeTeam}
                             </Typography>
-                            {React.createElement(getLogo(game.awayTeam), {className: "logo", size: "10vh", margin: 0})}
+                            {React.createElement(getLogo(game.homeTeam), {className: "logo", size: "10vh", margin: 0})}
                         </CardContent>
                         <Typography className = "time">
                             {game.timeEst}

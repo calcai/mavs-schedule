@@ -11,24 +11,24 @@ import { useState } from 'react';
 
 const GameDetails = () => {
 
-  const [format, setFormat] = useState(false);
+  const [averages, setAverages] = useState(false);
 
   let { gameId } = useParams();
 
   const game = gameData.games.find((game) => game.nbaGameId === gameId);
 
   const handleSwitch = () => {
-    setFormat(!format)
-    console.log(format)
+    setAverages(!averages)
   }
 
   return (
+    
     <div className = "game-details">
-        {game ? (
+        {game && game.gameStatus > 1 ? (
         <>
-          <Card className="card" sx = {{width: "90%"}}>
+          <Card className="card" sx = {{width: "95%"}}>
             <CardContent className="card-content" sx = {{ paddingLeft: 2, paddingRight: 2, paddingBottom:0 }}>
-                {React.createElement(getLogo(game.homeTeam), {className: "logo", size: "10vh"})} 
+                {React.createElement(getLogo(game.awayTeam), {className: "logo", size: "10vh"})} 
                 <Typography className="team" variant="body1" color="textPrimary">
                     {game.awayTeam}
                 </Typography>
@@ -38,21 +38,42 @@ const GameDetails = () => {
                 <Typography className="team" variant="body1" color="textPrimary">
                     {game.homeTeam}
                 </Typography>
-                {React.createElement(getLogo(game.awayTeam), {className: "logo", size: "10vh"})}
+                {React.createElement(getLogo(game.homeTeam), {className: "logo", size: "10vh"})}
             </CardContent>
             <Typography className = "time">
                 {game.timeEst}
             </Typography>
             <Stack direction="row" spacing={0.2} alignItems="center" justifyContent="flex-end" sx={{ ml: 'auto', paddingRight: "4%" }}>
-                <Typography variant="body2">Game Stats</Typography>
+                <Typography variant="body2">Totals</Typography>
                 <Switch onChange = {handleSwitch}/>
-                <Typography variant="body2">Per 36</Typography>
+                <Typography variant="body2">Averages</Typography>
             </Stack>
-            <Stats gameId = {gameId}/>
+            <Stats gameId = {gameId} gameStats = {averages}/>
         </Card>
         </>
       ) : (
-        <p>Game not found</p>
+        game ? (<>
+            <Card className="card" sx = {{width: "90%"}}>
+                <CardContent className="card-content" sx = {{ paddingLeft: 2, paddingRight: 2, paddingBottom:0 }}>
+                    {React.createElement(getLogo(game.awayTeam), {className: "logo", size: "10vh"})} 
+                    <Typography className="team" variant="body1" color="textPrimary">
+                        {game.awayTeam}
+                    </Typography>
+                    <Typography className="scores" variant="h5" color="textSecondary">
+                        {game.awayPts} - {game.homePts}
+                    </Typography>
+                    <Typography className="team" variant="body1" color="textPrimary">
+                        {game.homeTeam}
+                    </Typography>
+                    {React.createElement(getLogo(game.homeTeam), {className: "logo", size: "10vh"})}
+                </CardContent>
+                <Typography className = "time">
+                    {game.timeEst}
+                </Typography>
+            </Card>
+            <p>Lineups not set</p>
+            </>) : (
+            <p>No game available</p>)
       )}
     </div>
   );
