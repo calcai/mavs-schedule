@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import GameDetails from './pages/GameDetails';
 import './App.css';
+import ScoutingReport from './pages/ScoutingReport';
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
             <Route
               path="/game/:gameId"
               element={<GameDetails />}
+            />
+            <Route
+              path="/scoutingreport/:team"
+              element={<ScoutingReport />}
             />
           </Routes>
         </div>

@@ -1,8 +1,8 @@
 import gameData from '../../gameData.json'
-import Starters from './Statsheet.js/Starters';
-import Bench from './Statsheet.js/Bench';
-import StartersAverage from './Statsheet.js/StartersAverage';
-import BenchAverage from './Statsheet.js/BenchAverage';
+import Starters from './Statsheet/Starters';
+import Bench from './Statsheet/Bench';
+import StartersAverage from './Statsheet/StartersAverage';
+import BenchAverage from './Statsheet/BenchAverage';
 
 const Stats = (props) => {
 

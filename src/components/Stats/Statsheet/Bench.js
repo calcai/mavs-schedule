@@ -17,12 +17,12 @@ const Bench = (props) => {
             <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
                 <TableHead>
                 <TableRow hover>
-                <TableCell sx = {{
-                        position: "sticky",
-                        width: 180,
-                        left: 0,
-                        background: "white",
-                        zIndex: "9999 !important"}}><Typography><b>{rows[0].team} Bench</b></Typography></TableCell>
+                    <TableCell sx = {{
+                            position: "sticky",
+                            width: 180,
+                            left: 0,
+                            background: "white",
+                            zIndex: "9999 !important"}}><Typography><b>{rows[0].team} Bench</b></Typography></TableCell>
                     <TableCell align="right">Min</TableCell>
                     <TableCell align="right">FG</TableCell>
                     <TableCell align="right">FT</TableCell>
