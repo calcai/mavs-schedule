@@ -3,13 +3,15 @@ import FutureGames from '../components/Schedule/FutureGames.js';
 import OngoingGames from '../components/Schedule/OngoingGames.js';
 import PastGames from '../components/Schedule/PastGames.js';
 import './Home.css'
-import { getLogo } from '../dictionary.js';
+import gameData from "../gameData.json";
 
 const Home = () => {
+    const mavsLogo = gameData.teamData.find(team => team.team === "DAL")?.logo;
+    
     return (
         <>
           <div className='header'>
-            {React.createElement(getLogo("DAL"), {className: "logo", size: "10vh"})} 
+          <img src={mavsLogo} alt="Dallas Mavericks Logo" />
             <h2>Dallas Mavericks Schedule</h2>
           </div>
           <h3>

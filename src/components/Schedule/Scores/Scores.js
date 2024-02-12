@@ -2,10 +2,9 @@ import React from 'react';
 import { Card, CardContent, Typography, Button } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './Scores.css';
-import * as NBAIcons from 'react-nba-logos';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getLogo } from '../../../dictionary';
+import gameData from "../../../gameData.json";
 
 const Scores = (props) => {
 
@@ -16,8 +15,6 @@ const Scores = (props) => {
     const navigate = useNavigate()
 
     const pastGameData = props.gameData;
-
-    const home = props.home;
 
     const [selectedGameId, setSelectedGameId] = useState(null);
 
@@ -38,7 +35,7 @@ const Scores = (props) => {
                 Object.values(pastGameData).map((game, index) => (
                     <Card className="card" key={index}>
                         <CardContent className="card-content">
-                            {React.createElement(getLogo(game.awayTeam), {className: "logo", size: "10vh", margin: 0})} 
+                            <img src={getTeamLogo(game.awayTeam)} alt={`${game.awayTeam} Logo`} className="logo" />
                             <Typography className="team" variant="body1" color="textPrimary">
                                 {game.awayTeam}
                             </Typography>
@@ -48,16 +45,14 @@ const Scores = (props) => {
                             <Typography className="team" variant="body1" color="textPrimary">
                                 {game.homeTeam}
                             </Typography>
-                            {React.createElement(getLogo(game.homeTeam), {className: "logo", size: "10vh", margin: 0})}
+                            <img src={getTeamLogo(game.homeTeam)} alt={`${game.homeTeam} Logo`} className="logo" />
                         </CardContent>
-                        <Typography className = "time">
+                        <Typography className="time">
                             {game.timeEst}
                         </Typography>
-                        {home ? (
-                            <Button className="button" size="small" onClick={() => clickDetails(game.nbaGameId, game)} sx = {{ marginBottom: 0 }}>
+                        <Button className="button" size="small" onClick={() => clickDetails(game.nbaGameId, game)} sx={{ marginBottom: 0 }}>
                             Details
-                            </Button>
-                        ) : (null)}
+                        </Button>
                     </Card>
                 ))
             ) : (
@@ -66,8 +61,11 @@ const Scores = (props) => {
             </ThemeProvider>
         </div>
     );
-    
 };
 
-
 export default Scores;
+
+const getTeamLogo = (teamAbbreviation) => {
+    const team = gameData.teamData.find(team => team.team === teamAbbreviation);
+    return team ? team.logo : '';
+};

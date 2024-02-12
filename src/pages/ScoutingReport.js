@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
-import { getLogo, getTeam } from "../dictionary"
 import gameData from '../gameData.json';
 import { Stack, Typography, Card, Grid, Button } from '@mui/material';
 import TeamRanks from '../components/ScoutingReport/TeamRanks';
@@ -26,12 +25,14 @@ const ScoutingReport = () => {
         setOpen(false);
     };
 
+    const teamLogo = gameData.teamData.find(data => data.team === team)?.logo;
+
     return (
         <>
             <Stack direction="row" justifyContent="center" alignItems='center' spacing={2}>
-                {React.createElement(getLogo(team), {className: "logo", size: "10vh"})}
+                {teamLogo && <img src={teamLogo} alt={`${team} Logo`} className="logo" style={{ width: '10vh', height: '10vh' }} />}
                 <Typography variant="h4">
-                    <b>{getTeam(team)} Scouting Report</b>
+                    <b>{team} Scouting Report</b>
                 </Typography>
             </Stack>
             <Card className="card" sx={{ width: "95%" }}>
