@@ -14,7 +14,7 @@ const GameDetails = () => {
   const [averages, setAverages] = useState(false);
   const { gameId } = useParams();
   const game = gameData.games.find((game) => game.nbaGameId === gameId);
-  const team = game.homeTeam === "DAL" ? game.awayTeam : game.homeTeam;
+  const team = game && game.homeTeam === "DAL" ? game.awayTeam : game && game.homeTeam;
 
   const handleSwitch = () => {
     setAverages(!averages);
@@ -26,7 +26,7 @@ const GameDetails = () => {
 
   return (
     <div className="game-details">
-      {game ? (
+      {game && game.gameStatus > 1 ? (
         <>
           <Card className="card" sx={{ width: "95%" }}>
             <CardContent className="card-content" sx={{ paddingLeft: 2, paddingRight: 2, paddingBottom: 0 }}>
@@ -57,7 +57,32 @@ const GameDetails = () => {
           </Card>
         </>
       ) : (
-        <p>No game available</p>
+        game ? (
+          <>
+            <Card className="card" sx={{ width: "95%" }}>
+              <CardContent className="card-content" sx={{ paddingLeft: 2, paddingRight: 2, paddingBottom: 0 }}>
+                <img src={getTeamLogo(game.awayTeam)} alt={`${game.awayTeam} Logo`} className="logo" />
+                <Typography className="team" variant="body1" color="textPrimary">
+                  {game.awayTeam}
+                </Typography>
+                <Typography className="scores" variant="h5" color="textSecondary">
+                  {game.awayPts} - {game.homePts}
+                </Typography>
+                <Typography className="team" variant="body1" color="textPrimary">
+                  {game.homeTeam}
+                </Typography>
+                <img src={getTeamLogo(game.homeTeam)} alt={`${game.homeTeam} Logo`} className="logo" />
+              </CardContent>
+              <Typography className="time">
+                {game.timeEst}
+              </Typography>
+            </Card>
+            <Button variant="contained" alignItems="flex-end" onClick={() => handleScoutingClick(team)}>Scouting Report</Button>
+            <p>Lineups not set</p>
+          </>
+        ) : (
+          <p>No game available</p>
+        )
       )}
     </div>
   );
