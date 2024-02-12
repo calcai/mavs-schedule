@@ -15,7 +15,8 @@ const Scores = (props) => {
     const navigate = useNavigate()
 
     const pastGameData = props.gameData;
-
+    
+    // eslint-disable-next-line no-unused-vars
     const [selectedGameId, setSelectedGameId] = useState(null);
 
     useEffect(() => {
