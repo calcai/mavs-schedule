@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import gameData from '../gameData.json';
-import { Card, CardContent, Typography, Button, Grid } from '@mui/material';
+import { Card, CardContent, Typography, Button } from '@mui/material';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import IconButton from '@mui/material/IconButton';
 import './GameDetails.css';
