@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import gameData from '../gameData.json';
-import { Card, CardContent, Typography, Button } from '@mui/material';
+import { Card, CardContent, Typography, Button, Grid } from '@mui/material';
+import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
+import IconButton from '@mui/material/IconButton';
 import './GameDetails.css';
 import Stats from '../components/Stats/Stats';
 import Switch from '@mui/material/Switch';
@@ -29,7 +31,7 @@ const GameDetails = () => {
       {game && game.gameStatus > 1 ? (
         <>
           <Card className="card" sx={{ width: "95%" }}>
-            <CardContent className="card-content" sx={{ paddingLeft: 2, paddingRight: 2, paddingBottom: 0 }}>
+            <CardContent className="card-content" sx={{ paddingLeft: 2, paddingRight: 2, paddingBottom: 0, paddingTop:0 }}>
               <img src={getTeamLogo(game.awayTeam)} alt={`${game.awayTeam} Logo`} className="logo" />
               <Typography className="team" variant="body1" color="textPrimary">
                 {game.awayTeam}
@@ -60,6 +62,9 @@ const GameDetails = () => {
         game ? (
           <>
             <Card className="card" sx={{ width: "95%" }}>
+            <IconButton aria-label="back">
+                <ArrowBackRoundedIcon />
+            </IconButton>
               <CardContent className="card-content" sx={{ paddingLeft: 2, paddingRight: 2, paddingBottom: 0 }}>
                 <img src={getTeamLogo(game.awayTeam)} alt={`${game.awayTeam} Logo`} className="logo" />
                 <Typography className="team" variant="body1" color="textPrimary">
