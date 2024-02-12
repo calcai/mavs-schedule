@@ -12,7 +12,7 @@ const TeamRanks = (props) => {
 
     return(
         <TableContainer>
-            <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+            <Table size="small" aria-label="a dense table">
                 <TableHead>
                     <TableRow hover>
                         <TableCell align="center">Metric</TableCell>
